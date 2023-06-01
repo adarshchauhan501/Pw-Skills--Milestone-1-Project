@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title> Bill splitter</title>
+  <style>
+    .container {
+      max-width: 400px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #f5f5f5;
+      border-radius: 5px;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 8px 12px;
+      background-color: #4CAF50;
+      color: white;
+      text-decoration: none;
+      border-radius: 4px;
+    }
+
+    .result {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Bill Calculator</h1>
+    <div class="form-group">
+      <label for="cost">Cost per dish:</label>
+      <input type="number" id="cost" step="0.01" min="0">
+    </div>
+    <div class="form-group">
+      <label for="people">Number of people:</label>
+      <input type="number" id="people" min="1">
+    </div>
+    <button class="btn" onclick="calculateBill()">Calculate</button>
+    <div class="result" id="billResult"></div>
+  </div>
+
+  <script>
+    function calculateBill() {
+      var costPerDish = (document.getElementById("cost").value);
+      var numberOfPeople = (document.getElementById("people").value);
+
+      var totalBill = costPerDish * numberOfPeople;
+      var billPerPerson = totalBill / numberOfPeople;
+
+      var resultText = "Total Bill: " + totalBill.toFixed(2) + "<br>" + "Bill per person: " + billPerPerson.toFixed(2);
+      document.getElementById("billResult").innerHTML = resultText;
+    }
+  </script>
+</body>
+</html>

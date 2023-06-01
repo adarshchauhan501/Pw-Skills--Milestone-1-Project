@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Todo App</title>
+</head>
+<body>
+  <h1>Todo App</h1>
+  
+  <input type="text" id="todoInput" placeholder="Enter a TODO item">
+  <button onclick="addTodo()">Add</button>
+  
+  <ul id="todoList"></ul>
+  
+  <script>
+    function addTodo() {
+      var todoInput = document.getElementById("todoInput");
+      var todoList = document.getElementById("todoList");
+      
+      var todoItem = document.createElement("li");
+      var todoText = document.createTextNode(todoInput.value);
+      todoItem.appendChild(todoText);
+      
+      todoList.appendChild(todoItem);
+      
+      todoInput.value = "";
+    }
+  </script>
+</body>
+</html>

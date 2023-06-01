@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login Form Validation</title>
+  <style>
+    .error {
+      color: red;
+    }
+    
+    .success {
+      color: green;
+    }
+  </style>
+</head>
+<body>
+  <form id="loginForm">
+    <label>Email:</label>
+    <input type="text" id="emailInput" required>
+    
+    <br>
+    
+    <label>Password:</label>
+    <input type="password" id="passwordInput" required>
+    
+    <br>
+    
+    <button type="submit">Submit</button>
+  </form>
+  
+  <p id="validationMessage"></p>
+  
+  <script>
+    document.getElementById("loginForm").addEventListener("submit", function(event) {
+      event.preventDefault(); // Prevent form submission
+      
+      const emailInput = document.getElementById("emailInput");
+      const passwordInput = document.getElementById("passwordInput");
+      const validationMessage = document.getElementById("validationMessage");
+      
+      const email = emailInput.value;
+      const password = passwordInput.value;
+      
+      const emailRegex = /\S+@\S+\.\S+/; // Basic email validation regex
+      
+      if (emailRegex.test(email) && password.length >= 8) {
+        validationMessage.textContent = "Valid email and password!";
+        validationMessage.className = "success";
+      } else {
+        validationMessage.textContent = "Invalid email or password!";
+        validationMessage.className = "error";
+      }
+    });
+  </script>
+</body>
+</html>
